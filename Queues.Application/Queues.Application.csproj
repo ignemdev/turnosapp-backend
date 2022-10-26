@@ -18,11 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="PersonQueue\DTOs\" />
     <Folder Include="PersonQueue\Handlers\" />
-    <Folder Include="PersonQueue\Mappings\" />
-    <Folder Include="PersonQueue\Validators\" />
-    <Folder Include="Person\DTOs\" />
     <Folder Include="Person\Handlers\" />
     <Folder Include="Person\Mappings\" />
     <Folder Include="Person\Validators\" />

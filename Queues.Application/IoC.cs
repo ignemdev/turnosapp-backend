@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using Queues.Application.PersonQueue.Handlers;
 using Queues.Application.Queue.Handlers;
 using System.Reflection;
 
@@ -9,6 +10,7 @@ public static class IoC
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddTransient<IQueueHandler, QueueHandler>();
+        services.AddTransient<IPersonQueueHandler, PersonQueueHandler>();
 
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

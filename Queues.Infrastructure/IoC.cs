@@ -11,6 +11,7 @@ public static class IoC
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddTransient<IQueueService, QueueService>();
+        services.AddTransient<IPersonQueueService, PersonQueueService>();
 
         services.AddTransient<IQueuesDbContext, QueuesDbContext>();
 

@@ -21,7 +21,9 @@ public class QueueUpdateDtoValidator : AbstractValidator<QueueUpdateDto>
     {
         RuleFor(x => x.Id)
             .NotEmpty()
-            .GreaterThan(1);
+            .GreaterThan(1)
+            .WithName("Invalid-Id")
+            .WithMessage("Id inválido");
 
         RuleFor(x => x.Name)
             .NotEmpty()
