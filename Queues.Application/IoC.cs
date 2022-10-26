@@ -5,6 +5,7 @@ using Queues.Application.Queue.Handlers;
 using System.Reflection;
 
 namespace Queues.Application;
+
 public static class IoC
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)

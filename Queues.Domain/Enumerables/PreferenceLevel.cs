@@ -2,8 +2,8 @@
 {
     public enum PreferenceLevel : int
     {
-        FirstLevel = 1,
-        SecondLevel = 2,
-        ThirdLevel = 3
+        First = 1,
+        Second = 2,
+        Third = 3
     }
 }

@@ -16,10 +16,9 @@ namespace Queues.Application.Queue.Handlers
     }
     public class QueueHandler : BaseCrudHandler<Domain.Entities.Queue>, IQueueHandler
     {
-
         private readonly IQueueService _crudService;
         private readonly IMapper _mapper;
-
+        //TODO: añadir borrado
         public QueueHandler(IQueueService crudService, IMapper mapper) : base(crudService, mapper)
         {
             _crudService = crudService;

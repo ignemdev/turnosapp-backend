@@ -11,11 +11,5 @@ public class PersonQueueAddDtoValidator : AbstractValidator<PersonQueueAddDto>
             .GreaterThan(1)
             .WithName("Invalid-PersonId")
             .WithMessage("Id de persona inválido");
-
-        RuleFor(x => x.QueueId)
-            .NotEmpty()
-            .GreaterThan(1)
-            .WithName("Invalid-QueueId")
-            .WithMessage("Id de cola inválido");
     }
 }

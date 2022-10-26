@@ -12,6 +12,7 @@ public static class IoC
     {
         services.AddTransient<IQueueService, QueueService>();
         services.AddTransient<IPersonQueueService, PersonQueueService>();
+        services.AddTransient<IPersonService, PersonService>();
 
         services.AddTransient<IQueuesDbContext, QueuesDbContext>();
 
