@@ -109,6 +109,28 @@ public class QueueController : ControllerBase
         }
     }
 
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteQueue([FromRoute] int id)
+    {
+        var response = new ResponseModel<bool>();
+
+        try
+        {
+            var queueDeleted = await _queueHandler.Delete(id);
+            response.SetData(queueDeleted);
+
+            if (!response.HasData())
+                return NotFound();
+
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            response.SetErrorMessage(ex);
+            return BadRequest(response);
+        }
+    }
+
     [HttpPost("{id:int}/add")]
     public async Task<IActionResult> AddPersonToQueue([FromRoute] int id, [FromBody] PersonQueueAddDto personQueueAddDto)
     {

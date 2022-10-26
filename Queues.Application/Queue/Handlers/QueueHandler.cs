@@ -13,6 +13,7 @@ namespace Queues.Application.Queue.Handlers
         Task<QueueDetailDto> GetById(int id);
         Task<QueueDetailDto> Update(QueueUpdateDto dto);
         Task<QueueDetailDto> Create(QueueAddDto dto);
+        Task<bool> Delete(int id);
     }
     public class QueueHandler : BaseCrudHandler<Domain.Entities.Queue>, IQueueHandler
     {
@@ -41,6 +42,11 @@ namespace Queues.Application.Queue.Handlers
         public async Task<QueueDetailDto> Update(QueueUpdateDto dto)
         {
             return await base.Update<QueueDetailDto, QueueUpdateDto>(dto);
+        }
+
+        public new async Task<bool> Delete(int id)
+        {
+            return await base.Delete(id);
         }
     }
 }
