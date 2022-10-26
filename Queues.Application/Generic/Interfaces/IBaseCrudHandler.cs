@@ -1,13 +1,12 @@
-﻿using Queues.Application.Generic.DTOs;
-using Queues.Domain.Entities;
+﻿using Queues.Domain.Entities;
 
 namespace Queues.Application.Generic.Interfaces;
-public interface IBaseCrudHandler<TDto, TEntity> where TDto : BaseDto where TEntity : BaseEntity
+public interface IBaseCrudHandler<TEntity> where TEntity : BaseEntity
 {
     Task<IQueryable<TEntity>> Query();
-    Task<TDto> GetById(int id);
-    Task<TDto> Create(TDto dto);
-    Task<TDto> Update(TDto dto);
-    Task<TDto> Update(int id, TDto dto);
+    Task<List<TDto>> GetAll<TDto>(int top = 50);
+    Task<TDto> GetById<TDto>(int id);
+    Task<TResponseDto> Create<TResponseDto, TRequestDto>(TRequestDto dto);
+    Task<TResponseDto> Update<TResponseDto, TRequestDto>(TRequestDto dto);
     Task<bool> Delete(int id);
 }

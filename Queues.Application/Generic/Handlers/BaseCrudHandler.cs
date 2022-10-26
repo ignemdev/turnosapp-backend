@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-using Queues.Application.Generic.DTOs;
 using Queues.Application.Generic.Interfaces;
 using Queues.Domain.Entities;
 
 namespace Queues.Application.Generic.Handlers;
-public class BaseCrudHandler<TDto, TEntity> : IBaseCrudHandler<TDto, TEntity> where TDto : BaseDto where TEntity : BaseEntity
+public class BaseCrudHandler<TEntity> : IBaseCrudHandler<TEntity> where TEntity : BaseEntity
 {
     protected readonly IBaseCrudService<TEntity> _crudService;
     protected readonly IMapper _mapper;
@@ -20,32 +19,32 @@ public class BaseCrudHandler<TDto, TEntity> : IBaseCrudHandler<TDto, TEntity> wh
         return Task.FromResult(_crudService.Query());
     }
 
-    public virtual async Task<TDto> GetById(int id)
+    public async Task<List<TDto>> GetAll<TDto>(int top = 50)
+    {
+        var entities = await _crudService.Get(top);
+        var dtos = _mapper.Map<List<TDto>>(entities);
+        return dtos;
+    }
+
+    public virtual async Task<TDto> GetById<TDto>(int id)
     {
         var entity = await _crudService.GetById(id);
         var dto = _mapper.Map<TDto>(entity);
         return dto;
     }
 
-    public virtual async Task<TDto> Create(TDto dto)
+    public virtual async Task<TResponseDto> Create<TResponseDto, TRequestDto>(TRequestDto dto)
     {
         var entity = _mapper.Map<TEntity>(dto);
         entity = await _crudService.Create(entity);
-        return _mapper.Map(entity, dto);
+        return _mapper.Map<TResponseDto>(entity);
     }
 
-    public virtual async Task<TDto> Update(TDto dto)
+    public virtual async Task<TResponseDto> Update<TResponseDto, TRequestDto>(TRequestDto dto)
     {
         var entity = _mapper.Map<TEntity>(dto);
         entity = await _crudService.Update(entity);
-        return _mapper.Map(entity, dto);
-    }
-
-    public virtual async Task<TDto> Update(int id, TDto dto)
-    {
-        var entity = _mapper.Map<TEntity>(dto);
-        entity = await _crudService.Update(id, entity);
-        return _mapper.Map(entity, dto);
+        return _mapper.Map<TResponseDto>(entity);
     }
 
     public virtual async Task<bool> Delete(int id)

@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Queues.Infrastructure\Queues.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
