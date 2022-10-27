@@ -93,7 +93,6 @@ namespace Queues.Application.PersonQueue.Handlers
             return peopleQueuesDetails;
         }
 
-        //TODO: organizar por preferencia
         public async Task<List<PersonQueueDetailDto>> GetAllPeopleQueueByQueueId(int queueId)
         {
             var inQueueStates = new HashSet<State> { State.InQueue, State.Active };

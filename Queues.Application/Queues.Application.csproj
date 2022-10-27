@@ -18,9 +18,4 @@
     <ProjectReference Include="..\Queues.Domain\Queues.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Person\Handlers\" />
-    <Folder Include="Person\Validators\" />
-  </ItemGroup>
-
 </Project>

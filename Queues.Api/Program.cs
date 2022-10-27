@@ -1,7 +1,12 @@
 using Queues.Application;
+using Queues.Domain.Configurations;
 using Queues.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddOptions();
+
+builder.Services.Configure<FormRecognizerConfiguration>(builder.Configuration.GetSection("FormRecognizer"));
 
 builder.Services.AddControllers();
 

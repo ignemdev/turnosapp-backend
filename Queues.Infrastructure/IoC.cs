@@ -13,6 +13,7 @@ public static class IoC
         services.AddTransient<IQueueService, QueueService>();
         services.AddTransient<IPersonQueueService, PersonQueueService>();
         services.AddTransient<IPersonService, PersonService>();
+        services.AddTransient<IDocumentRecognizerService, DocumentRecognizerService>();
 
         services.AddTransient<IQueuesDbContext, QueuesDbContext>();
 
