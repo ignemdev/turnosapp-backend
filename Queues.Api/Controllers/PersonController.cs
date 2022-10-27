@@ -44,8 +44,25 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddPerson([FromBody] PersonAddDto personAddDto)
+    public async Task<IActionResult> AddPerson([FromForm] PersonAddDto personAddDto)
     {
-        throw new NotImplementedException();
+        var response = new ResponseModel<PersonDetailDto>();
+
+        try
+        {
+            var personDocument = await _documentRecognizerService.GetRecognizedDocument(personAddDto.DocumentFile);
+            var person = await _personHandler.Create(personDocument, personAddDto);
+            response.SetData(person);
+
+            if (!response.HasData())
+                return NotFound();
+
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            response.SetErrorMessage(ex);
+            return BadRequest(response);
+        }
     }
 }

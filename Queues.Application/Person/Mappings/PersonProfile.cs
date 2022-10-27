@@ -7,6 +7,6 @@ public class PersonProfile : Profile
     public PersonProfile()
     {
         CreateMap<PersonDetailDto, Domain.Entities.Person>().ReverseMap();
-        CreateMap<PersonDetailDto, Domain.Entities.Person>().ReverseMap();
+        CreateMap<PersonAddDto, Domain.Entities.Person>().ReverseMap();
     }
 }
